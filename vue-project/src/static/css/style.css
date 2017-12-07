@@ -1,0 +1,10 @@
+body{
+    background-color: #ffffff;
+}
+.newsInfoContent p img,
+#info img {
+  width: 100%;
+}
+#info table {
+  width: 100%;
+}
