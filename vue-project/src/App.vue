@@ -22,7 +22,7 @@
         </router-link>
       </mt-tab-item>
       <mt-tab-item>
-        <router-link to="/cart" class="router-link">
+        <router-link to="/shopCart" class="router-link">
           <img src="//st.360buyimg.com/m/images/index/n-cart.png">
           <span v-show="count" class="mui-badge goods-badge">{{count}}</span>
         </router-link>
