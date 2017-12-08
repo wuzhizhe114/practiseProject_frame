@@ -8,6 +8,8 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 // 日期处理类库
 import moment from 'moment';
+// vuex 状态（数据）管理模式
+import vuex from 'vuex';
 
 // mint-ui的样式文件
 import 'mint-ui/lib/style.css';
@@ -23,6 +25,7 @@ Vue.use(MintUI);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VuePreview);
+Vue.use(vuex);
 
 // 定义路由 单页面路由容器
 import home from '@/home/home.vue';
@@ -66,9 +69,31 @@ Vue.filter('formatDate',(input,formatStr)=>{
   return moment(input).format(lastFormatStr);
 });
 
+// 创建仓库
+const store = new vuex.Store({
+  state:{
+    goodsList:[],
+  },
+  mutations: {
+    addGoods(state,goods){
+      state.goodsList.push(goods);
+    }
+  },
+  getters:{
+    getTotalGoodsCount(state){
+      let totalCount = 0;
+      state.goodsList.forEach(goods=>{
+        totalCount += goods.count;
+      });
+      return totalCount;
+    }
+  }
+});
+
 // 创建一个根实例
 new Vue({
   el:'#app',
   router, // 挂载到根实例上
+  store,
   render:h=>h(App)
 });

@@ -18,7 +18,7 @@
       <sub-number :totalCount="goodsInfo.stock_quantity" v-on:changeNumber="selectedNum"></sub-number>
 
       <mt-button type="primary" size="small" @click="immediatelyShop">立即购买</mt-button>
-      <mt-button type="danger" size="small" @click="joinCart">加入购物车</mt-button>
+      <mt-button type="danger" size="small" @click="joinCart()">加入购物车</mt-button>
     </div>
 
     <!-- 商品参数 -->
@@ -86,7 +86,7 @@
   // 公共工具
   import common from '../../common/common.js'
   // 公共vue对象
-  import bus from '../../common/commonVue.js';
+  // import bus from '../../common/commonVue.js';
 
   //  轮播图子组件
   import subSwipe from '../subComponents/subSwipe.vue';
@@ -139,7 +139,15 @@
         // console.log(this.selectNumber);
         // 非父子组件间传值 
         // 1，传值方触发事件
-        bus.$emit('goodsBadge', this.selectNumber);
+        // bus.$emit('goodsBadge', this.selectNumber);
+
+        // 使用vuex 保存要加入的商品信息
+        const goods = {
+          goodsId:this.$route.params.goodsId,
+          count:this.selectNumber
+        }
+        this.$store.commit('addGoods',goods);
+
         common.toastText('添加购物车成功');
       },
       // 立即购买

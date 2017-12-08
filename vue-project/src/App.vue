@@ -85,7 +85,7 @@
 <!-- ************************************************************** -->
 <script>
   // 公共vue对象
-  import bus from './common/commonVue.js';
+  // import bus from './common/commonVue.js';
 
   export default {
     data() {
@@ -115,9 +115,15 @@
 
       // 非父子组件间传值
       // 2.接收方监听事件
-      bus.$on('goodsBadge', num=>{
-        this.count += num;
-      })
+      // bus.$on('goodsBadge', num=>{
+      //   this.count += num;
+      // })
+
+      
+    },
+    updated(){
+      // 改用vuex 获取商品总数，显示为徽标值,因为数据需要更新，所以写到updated里面
+      this.count = this.$store.getters.getTotalGoodsCount;
     },
     // 监听路由的变化
     watch: {
