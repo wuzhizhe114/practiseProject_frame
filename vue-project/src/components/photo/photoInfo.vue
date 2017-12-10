@@ -76,7 +76,7 @@
         const url = `${common.hostUrl}api/getimageInfo/${this.$route.params.photoId}`;
 
         this.$http.get(url).then(response => {
-          console.log(response.body.message[0]);
+          // console.log(response.body.message[0]);
           this.photoInfo = response.body.message[0];
         });
       },

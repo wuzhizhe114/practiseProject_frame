@@ -2,7 +2,7 @@
  * @Author: wuzhizhe/chenGuangHui 
  * @Date: 2017-12-03 11:03:13 
  * @Last Modified by: wuzhizhe/chenGuangHui
- * @Last Modified time: 2017-12-07 12:23:36
+ * @Last Modified time: 2017-12-10 10:17:16
  */
 
 // 加载时的动画提示
@@ -21,7 +21,7 @@ export default {
   // 开始加载时的动画效果
   startLoadingAnimate() {
     Indicator.open({
-      text: '加载中...',
+      text: '甭催了，越催越忙 \\(^o^)/',
       spinnerType: 'triple-bounce'
       // spinnerType: 'double-bounce'
     });
@@ -31,7 +31,7 @@ export default {
   endLoadingAnimate() {
     setTimeout(() => {
       Indicator.close();
-    }, 900);
+    }, 1000);
   },
   
   // 提示信息

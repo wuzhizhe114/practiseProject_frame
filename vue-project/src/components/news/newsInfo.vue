@@ -61,7 +61,6 @@
       getNewsInfoData(){
         const url = common.hostUrl + 'api/getnew/'+this.$route.params.newId;
 
-        // console.log(url);
         this.$http.get(url).then(response=>{
           // console.log(response.body.message[0]);
           this.newsInfo = response.body.message[0];

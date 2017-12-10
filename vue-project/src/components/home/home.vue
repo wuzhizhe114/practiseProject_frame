@@ -26,19 +26,19 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <a href="javascript:;" @click="goVideoZone">
           <span class="mui-icon videoZone"></span>
           <div class="mui-media-body">视频专区</div>
         </a>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <a href="javascript:;" @click="goFeedback">
           <span class="mui-icon feedback"></span>
           <div class="mui-media-body">留言反馈</div>
         </a>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <a href="javascript:;" @click="goContactOwn">
           <span class="mui-icon contactOwn"></span>
           <div class="mui-media-body">联系我们</div>
         </a>
@@ -50,11 +50,32 @@
 <script>
   // 轮播图子组件
   import subSwipe from '../subComponents/subSwipe.vue';
+  import common from '../../common/common.js';
 
   export default {
     // 注册子组件
     components: {
       subSwipe
+    },
+    beforeCreate () {
+      common.startLoadingAnimate();
+    },
+    mounted () {
+      common.endLoadingAnimate();
+    },
+    methods:{
+      // 视频专区
+      goVideoZone(){
+        common.toastText('视频？是没有的...哈哈');
+      },
+      // 留言反馈
+      goFeedback(){
+        common.toastText('留言干嘛，有事给我打电话 \\(^o^)/~');
+      },
+      // 联系我们
+      goContactOwn(){
+        common.toastText('终于到这了，电话给你了--> 1802*****71');
+      }
     }
   };
 </script>

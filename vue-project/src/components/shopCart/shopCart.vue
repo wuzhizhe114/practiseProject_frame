@@ -1,6 +1,10 @@
 <template>
   <div>
     <div class="m-bottom">
+      <p v-show="shopCartList.length === 0?true:false">
+        客官，没选商品肯定是肯定是空空如也的哦，点
+        <router-link to="/goods/goodsList">这里</router-link>到商品中心抢几件吧！
+      </p>
       <div class="wrapper" v-for="(item,index) of shopCartList" :key="item.id">
       <div class="toggle">
         <mt-switch v-model="item.toggle" @change="getTotalPrice()"></mt-switch>
@@ -28,7 +32,7 @@
         </p>
       </div>
       <div class="right">
-        <mt-button size="normal" type="danger">去结算</mt-button>
+        <mt-button size="normal" type="danger" @click="goClearing">去结算</mt-button>
       </div>
     </div>
   </div>
@@ -170,7 +174,6 @@
             common.endLoadingAnimate();
           });
         } else {
-          common.toastText('暂无数据');
           common.endLoadingAnimate();
         }
       },
@@ -194,8 +197,6 @@
       // 根据当前商品的id和索引来删除商品
       deleteGoodsForId(goodsId,index){
         MessageBox.confirm('确定删除此商品吗?').then(action => {
-          common.startLoadingAnimate();
-          // console.log(goodsId);
           this.$store.commit('delelteGoodsForId',goodsId);
 
           // 删除选中的那个
@@ -204,10 +205,15 @@
           // vue是数据驱动的，只需要修改数据，相对应的视图便会更新，而且计算总价的函数写在update钩子函数中，所以也不需要手动重新计算
           // this.getShopCartData();
           // this.getTotalPrice();
-          common.endLoadingAnimate();
+          // 删除成功提示
+          common.toastText('删除成功！');
         },cancel=>{
           console.log('取消操作');
         });
+      },
+      // 去结算
+      goClearing(){
+        common.toastText('不用付了，店家免费送...');
       }
     }
   }

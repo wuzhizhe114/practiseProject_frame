@@ -63,8 +63,12 @@
         // es6 模板字符串
         const url = `${common.hostUrl}api/getnewslist`;
 
-        this.$http.get(url).then(response=>{
-          this.newsListArray = response.body.message;
+        // this.$http.get(url).then(response=>{
+        //   this.newsListArray = response.body.message;
+        // });
+        this.$axios.get(url).then(response=>{
+          // console.log(response.data);
+          this.newsListArray = response.data.message;
         });
       }
     }

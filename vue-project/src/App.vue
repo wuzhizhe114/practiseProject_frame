@@ -13,23 +13,25 @@
       <mt-tab-item>
         <!-- 声明式导航 -->
         <router-link to="/home">
-          <img src="//st.360buyimg.com/m/images/index/a-home.png">
+          <img src="http://st.360buyimg.com/m/images/index/a-home.png">
         </router-link>
       </mt-tab-item>
       <mt-tab-item>
         <router-link to="/category">
-          <img src="//st.360buyimg.com/m/images/index/n-catergry.png">
+          <img src="http://st.360buyimg.com/m/images/index/n-catergry.png">
         </router-link>
       </mt-tab-item>
       <mt-tab-item>
         <router-link to="/shopCart" class="router-link">
-          <img src="//st.360buyimg.com/m/images/index/n-cart.png">
+          <img src="http://st.360buyimg.com/m/images/index/n-cart.png">
           <span v-show="count" class="mui-badge goods-badge">{{count}}</span>
         </router-link>
 
       </mt-tab-item>
       <mt-tab-item>
-        <img src="//st.360buyimg.com/m/images/index/n-me.png">
+        <router-link to="/mine">
+          <img src="http://st.360buyimg.com/m/images/index/n-me.png">
+        </router-link>
       </mt-tab-item>
     </mt-tabbar>
   </div>
